@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#####################################
+# Added to avoid setting file
+settings.py
