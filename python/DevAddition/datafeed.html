@@ -6,39 +6,68 @@
     <title>Live Feed - Websocket</title>
     <meta content="width=device-width,initial-scale=1" name="viewport" />
   </head>
+
   <body>
     <h2>Live Feed Test Page - Kotak Securities</h2>
-    <b>Websocket status: </b><span id="wss"></span> [<span id="wssmsg"></span
-    >]<br /><br />Consumer Key:
-    <input id="key" type="text" /><br /><br />Consumer Secret:
-    <input id="secret" type="password" /><br /><br /><input
+
+    <b>Websocket status: </b>
+    <span id="wss"></span> 
+    [<span id="wssmsg"></span>] 
+    <br /><br />
+
+    Consumer Key:
+    <input id="key" type="text" />
+    <br /><br />
+
+    Consumer Secret:
+    <input id="secret" type="password" />
+    <br /><br />
+
+    <!-- Generate New Access Token-->
+    <input
       id="generate"
       type="button"
       value="Generate New Access Token"
-    /><br /><br />Access token:
-    <textarea cols="90" id="token" rows="2"></textarea><br /><br /><span
-      >-----------------------------------------------------------</span
-    ><br /><br /><input
-      id="market-connect"
-      type="button"
-      value="Connect Market Feed"
-    /><br /><br />Wtoken(s): <input id="wtokens" type="text" /> Type multiple
-    tokens comma (,) separated<br /><br /><input
-      id="send-token"
-      type="button"
-      value="Send Wtoken"
-    /><br /><br /><textarea cols="100" id="text0" rows="15"></textarea
-    ><br /><br /><span
-      >-----------------------------------------------------------</span
-    ><br /><br /><input
-      id="order-connect"
-      type="button"
-      value="Connect Order Feed"
-    /><br /><br /><textarea cols="100" id="text1" rows="15"></textarea
-    ><br /><br />
+    />
+    <br /><br />
+
+    Access token:
+    <textarea cols="90" id="token" rows="2"></textarea>
+    <br /><br />
+    <span>-----------------------------------------------------------</span>
+    <br /><br />
+    <input id="market-connect" type="button" value="Connect Market Feed" />
+    <br /><br />
+
+    Wtoken(s):
+    <input id="wtokens" type="text" />
+    Type multiple tokens comma (,) separated
+    <br /><br />
+
+    <!-- Send Wtoken - #Button -->
+    <input id="send-token" type="button" value="Send Wtoken" />
+    <br /><br />
+
+    <!-- #Data Feed - Get market data feed -->
+    <textarea cols="100" id="text0" rows="15"></textarea>
+    <br /><br />
+
+    <span>-----------------------------------------------------------</span>
+    <br /><br />
+
+    <!-- #Button - Connect Order Feed -->
+    <input id="order-connect" type="button" value="Connect Order Feed" />
+    <br /><br />
+
+    <!-- #Data Feed - Connect Order Feed -->
+    <textarea cols="100" id="text1" rows="15"></textarea>
+    <br /><br />
+
     <h5>
       It is a sample page to test and understand market/order feed connection.
     </h5>
+
+    <!-- JavaScript code starts from here -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2.0.0/dist/socket.io.min.js"></script>
     <script>
@@ -57,6 +86,7 @@
           $("#text0").append("Websocket not running\n");
           $("#text1").append("Websocket not running\n");
         });
+
       $("#generate").click(function () {
         if ($("#key").val() && $("#key").val()) {
           $.post(
